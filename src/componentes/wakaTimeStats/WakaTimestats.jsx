@@ -5,7 +5,7 @@ import { fetchWakaTimeStats } from "../../services/wakatimeService";
 import CodingNow from "./CodingNow";
 import { formatDate, formatDuration, formatNumber, formatPercent } from "./format";
 import { languageColor } from "./languageColors";
-import "./WakaTimeStats.css";
+import "./WakaTimestats.css";
 
 /**
  * Painel com as estatísticas do WakaTime (tempo programando, linguagens,
