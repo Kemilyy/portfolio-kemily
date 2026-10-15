@@ -1,0 +1,41 @@
+/* ===== Seção do currículo ===== */
+#curriculo {
+    /* o CSS do visualizador lê estas variáveis */
+    --brand: #7c5cd6;
+    --brand-deep: #6b4bc4;
+    --foreground: #f1f1f1;
+    --muted: #aaa;
+    --border: #2e2e2e;
+    --surface-muted: #1c1c1c;
+
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+    scroll-margin-top: 80px; /* evita que a navbar cubra o título ao rolar */
+}
+
+body::selection {
+    background-color: #7c5cd6;
+    color: white;
+}
+
+#curriculo .cv-viewer {
+    background: #121212;
+}
+
+#curriculo .cv-toolbar {
+    background: rgba(18, 18, 18, 0.95);
+}
+
+#curriculo .cv-button {
+    background: #121212;
+}
+
+#curriculo .cv-langs button:not(.active):hover,
+#curriculo .cv-zoom button:hover:not(:disabled) {
+    background: #2a2a2a;
+}
+
+#curriculo .cv-area {
+    background: #0b0b0b;
+}

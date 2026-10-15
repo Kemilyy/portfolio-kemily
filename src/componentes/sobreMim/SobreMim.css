@@ -5,10 +5,10 @@
     --texto-suave: #a1a1aa;
     --destaque: #a78bfa;
 
-    --largura: 85%;              /* era 80%: mais larga = o texto vai para a esquerda */
+    --largura: 85%;              /* mais larga = o texto vai para a esquerda */
     --largura-max: 1200px;
 
-    padding: 60px 0;
+    padding: 100px 0;
     font-family: 'Inter', system-ui, sans-serif;
     color: var(--texto);
     background-color: #14121b;
@@ -20,27 +20,40 @@
     box-sizing: border-box;
 }
 
-.sobre-titulo {
-    font-size: 36px;
-    color: #fff;
-    width: var(--largura);
-    max-width: var(--largura-max);
-    margin: 0 auto 0;
-    text-align: left;  
-}
-
 /* ---------- Grade de 2 colunas ---------- */
 .sobre-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.7fr;
+    grid-template-columns: 1.1fr 0.6fr;
     gap: clamp(32px, 6vw, 100px);
-    align-items: center;
+    align-items: center;         /* centraliza as duas colunas na vertical */
     width: var(--largura);
     max-width: var(--largura-max);
     margin: 0 auto;
 }
 
-/* ---------- Coluna 1: texto ---------- */
+/* ---------- Coluna 1: títulos + texto ---------- */
+
+/* "Olá, eu sou": menor, discreto */
+.sobre-texto h2 {
+    margin: 0 0 4px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--destaque);
+}
+
+/* Nome: bem maior que o "Olá" */
+.sobre-texto h3 {
+    margin: 0 0 32px;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--texto);
+}
+
+.sobre-texto{
+    transform: translateX(-100px);
+}
+
 .sobre-texto p {
     margin: 0 0 20px;
     font-size: 1.1rem;

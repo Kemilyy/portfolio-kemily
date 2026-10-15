@@ -31,6 +31,7 @@
     width: 80%;                 /* 10% de margem de cada lado */
     max-width: 1600px;          /* teto de legibilidade em telas ultrawide */
     margin: 0 auto;
+    margin-bottom: 40px;
 }
 
 /* o título ocupa a linha inteira da grade */

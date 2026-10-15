@@ -23,7 +23,7 @@
 
 .desc {
     margin: 5px;
-    font-size: 40px;                  
+    font-size: 50px;                  
 }
 
 .esquerda p {
@@ -125,4 +125,8 @@
     margin-top: 28px;
     font-size: 15px;              /* era 13px */
     color: #777;
+}
+
+.btn-secundario[aria-expanded="true"] {
+    border-color: #7c5cd6;
 }

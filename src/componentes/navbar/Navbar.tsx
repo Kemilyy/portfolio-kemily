@@ -1,6 +1,10 @@
 import './Navbar.css';
 
-function Navbar() {
+interface NavbarProps {
+    onAbrirCurriculo: () => void;
+}
+
+function Navbar({ onAbrirCurriculo }: NavbarProps) {
     return (
         <header className="topo">
             <a href="#" className="logo"> logo </a>
@@ -11,6 +15,17 @@ function Navbar() {
                     <li><a href="#projetos">Projetos</a></li>
                     <li><a href="#experiencias">Experiencias</a></li>
                     <li><a href="#tecnologias">Tecnologias</a></li>
+                    <li>
+                        <a
+                            href="#curriculo"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                onAbrirCurriculo();
+                            }}
+                        >
+                            Currículo
+                        </a>
+                    </li>
                 </ul>
             </nav>
 

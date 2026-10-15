@@ -3,13 +3,14 @@ import "./SobreMim.css";
 function SobreMim() {
     return (
         <section className="sobreMim" id="sobre">
-            <h2 className="sobre-titulo">Sobre mim</h2>
-
             <div className="sobre-grid">
-                {/* Coluna 1: apresentação */}
+                {/* Coluna 1: títulos + apresentação */}
                 <div className="sobre-texto">
+                    <h2>Olá, eu sou</h2>
+                    <h3>Kemily Eduardo da Luz</h3>
+
                     <p>
-                        Olá! Sou <strong>Kemily Eduardo da Luz</strong>, estudante de Engenharia de
+                        Sou estudante de Engenharia de
                         Software e técnica em Redes de Computadores. Atuo no desenvolvimento web e na
                         criação de aplicações em Python, Java e C++.
                     </p>
@@ -30,8 +31,7 @@ function SobreMim() {
                             <span className="sobre-card-unidade">anos na área</span>
                         </div>
                         <p className="sobre-card-descricao">
-                            Desenvolvimento de software, projetos acadêmicos e extracurriculares, e a
-                            equipe FlyTechDrones, no software de navegação autônoma de drones.
+                            Desenvolvimento de software, projetos acadêmicos e extracurriculares, e equipe de competição Flytec Drones.
                         </p>
                     </article>
 
