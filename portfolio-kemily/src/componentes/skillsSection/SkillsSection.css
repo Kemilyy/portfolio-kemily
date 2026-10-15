@@ -1,0 +1,200 @@
+.skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skills-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ---------- Chips de categoria ---------- */
+
+.skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skills-chips button,
+.skills-view button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 14px;
+    color: #aaa;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.skills-chips button span {
+    padding: 1px 7px;
+    color: #a78bfa;
+    background: #1c1830;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.skills-chips button:hover,
+.skills-view button:hover {
+    color: #fff;
+    border-color: #7c5cd6;
+}
+
+.skills-chips button.active {
+    color: #fff;
+    background: #7c5cd6;
+    border-color: #7c5cd6;
+}
+
+.skills-chips button.active span {
+    color: #7c5cd6;
+    background: #fff;
+}
+
+/* ---------- Globo / Lista ---------- */
+
+.skills-view {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: #151518;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.skills-view button {
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+}
+
+.skills-view button.active {
+    color: #fff;
+    background: #7c5cd6;
+}
+
+.skills-hint {
+    margin: -8px 0 0;
+    color: #8b8b98;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ---------- Lista em grade ---------- */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skills-grid a {
+    position: relative;        /* ancora o ::before neste card */
+    isolation: isolate;        /* z-index: -1 fica atrás do texto, mas na frente do fundo do card */
+    overflow: hidden;          /* a onda respeita o border-radius */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 12px;
+    color: #fff;
+    background: #151518;
+    border: 1px solid #2a2a30;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* ---------- Camada de preenchimento na diagonal (inferior direito → superior esquerdo) ---------- */
+
+.skills-grid a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    /* 315deg = o gradiente aponta para o canto superior esquerdo, começando no inferior direito */
+    background: linear-gradient(315deg, #7c5cd6 50%, transparent 50%);
+    background-size: 300% 300%;        /* 3x maior que o card: só uma "janela" aparece */
+    background-position: 0% 0%;        /* janela no canto superior esquerdo (transparente): card sem cor */
+    transition: background-position 0.5s ease;
+}
+
+.skills-grid a:hover,
+.skills-grid a:focus-visible {
+    border-color: #7c5cd6;
+    box-shadow: 0 10px 24px -12px rgba(124, 92, 214, 0.6);
+    transform: translateY(-2px);
+}
+
+.skills-grid a:hover::before,
+.skills-grid a:focus-visible::before {
+    background-position: 100% 100%;  /* janela desliza para o canto roxo: a cor entra pelo canto inferior direito */
+}
+
+/* ---------- Ícone ---------- */
+
+/* sem círculo: o ícone fica direto sobre o card (a cor clara garante a visibilidade) */
+.skills-grid-icone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+}
+
+.skills-grid-icone svg {
+    width: 28px;
+    height: 28px;
+    color: var(--skill);                                /* fallback para navegadores antigos */
+    color: oklch(from var(--skill) max(l, 0.72) c h);   /* clareia só o que for escuro */
+}
+
+.skills-grid-nome {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.skills-grid small {
+    color: #8b8b98;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+/* o texto secundário fica ilegível sobre o roxo, então clareia no hover */
+.skills-grid a:hover small,
+.skills-grid a:focus-visible small {
+    color: #e9e3ff;
+}
+
+/* ---------- Acessibilidade: movimento reduzido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-grid a,
+    .skills-grid small,
+    .skills-chips button,
+    .skills-view button {
+        transition: none;
+    }
+
+    .skills-grid a::before {
+        transition: none;
+    }
+}

@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.projetos {
+    --card: #17171b;
+    --previa: #0a0803;          /* mesma cor de fundo da imagem do TimelineArt */
+    --borda: #2a2b31;
+    --texto: #f4f4f6;
+    --texto-suave: #a1a1aa;
+    --texto-fraco: #71717a;
+    --destaque: #a78bfa;
+    --chip: #202126;
+
+    margin: 0 auto;
+    padding: 48px 0;            /* só vertical: a margem lateral vem do width da lista */
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--texto);
+    background-color: #14121b;
+}
+
+.projetos *,
+.projetos *::before,
+.projetos *::after {
+    box-sizing: border-box;
+}
+
+/* ---------- Lista: grade responsiva (quem decide quantas colunas) ---------- */
+.projetos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp(16px, 2vw, 32px);
+    width: 80%;                 /* 10% de margem de cada lado */
+    max-width: 1600px;          /* teto de legibilidade em telas ultrawide */
+    margin: 0 auto;
+}
+
+/* o título ocupa a linha inteira da grade */
+.titulo {
+    grid-column: 1 / -1;
+}
+
+.titulo h2 {
+    font-size: 36px;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------- Card: pilha vertical (imagem em cima, texto embaixo) ---------- */
+.projeto-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.projeto-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(152, 127, 227, 0.2);
+}
+
+.projeto-previa {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    aspect-ratio: 16 / 9;       /* mantém a proporção em qualquer largura */
+    background-color: var(--previa);
+    text-align: center;
+}
+
+/* contain = a imagem aparece inteira, sem cortar o topo nem a base */
+.projeto-previa img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.projeto-previa svg {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 6px;
+    color: var(--texto-fraco);
+}
+
+.previa-titulo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+}
+
+.previa-legenda {
+    font-size: 0.7rem;
+    color: var(--texto-fraco);
+}
+
+/* ---------- Conteúdo ---------- */
+.projeto-conteudo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;                    /* cresce para igualar a altura dos cards da mesma linha */
+    padding: clamp(20px, 3vw, 28px);
+    position: relative;
+    isolation: isolate;
+}
+
+.projeto-tipo {
+    margin: 0 0 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--destaque);
+}
+
+.projeto-titulo {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--texto);
+}
+
+.projeto-descricao {
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--texto-suave);
+}
+
+.projeto-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 0;
+    list-style: none;
+}
+
+.projeto-tags li {
+    padding: 5px 11px;
+    background-color: var(--chip);
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--texto-suave);
+}
+
+.projeto-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: auto;           /* empurra os links para a base do card */
+}
+
+.projeto-links a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--texto-suave);
+    transition: color 0.15s;
+}
+
+.projeto-links a:hover {
+    color: var(--texto);
+}
+
+.projeto-links a.principal {
+    color: var(--destaque);
+}
+
+.projeto-links a.principal:hover {
+    color: #c4b5fd;
+}
+
+.projeto-links a:focus-visible {
+    outline: 2px solid var(--destaque);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+

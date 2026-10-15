@@ -1,0 +1,21 @@
+.tecnologias {
+    padding: 50px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.tecnologias h2 {
+    font-size: 36px;
+    color: #fff;
+    margin-top: 0;
+}
+
+.tecnologias h2 {
+    margin-bottom: 32px;
+}
+
+@media (max-width: 800px) {
+    .tecnologias {
+        padding: 48px 20px;
+    }
+}

@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+h1, h2, h3{
+  font-family: "DM Sans	", sans-serif;
+}

@@ -1,0 +1,128 @@
+.sobre {
+    display: grid;
+    grid-template-columns: auto auto;   
+    justify-content: center;            
+    align-items: center;
+    gap: 180px;                         
+    min-height: 80vh;
+    padding: 0px 80px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.esquerda {
+    transform: translateX(-50px);
+}
+
+.nome {
+    font-size: 100px;                 
+    color: #866ad8;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.desc {
+    margin: 5px;
+    font-size: 40px;                  
+}
+
+.esquerda p {
+    max-width: 650px;                  
+    line-height: 1.6;
+    font-size: 15px;                   
+    color: #aaa;
+}
+
+.direita {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moldura {
+    position: relative;
+    max-width: 320px;                   /* era 300px */
+    margin-top: 50px;
+}
+
+.moldura img {
+    position: relative;
+    z-index: 1;                  /* a foto fica POR CIMA das linhas */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+/* As duas linhas: dois quadrados vazios atrás da foto */
+.moldura::before,
+.moldura::after {
+    content: "";                 /* obrigatório: sem isso o pseudo-elemento não aparece */
+    position: absolute;
+    inset: -20px;                /* estende para fora nos 4 lados (era -16px) */
+    border: 2px solid #5d44a1;
+    border-radius: 12px;
+    z-index: 0;
+}
+
+.moldura::after {
+    transform: rotate(8deg);     /* o quadrado torto */
+    border-color: #6d5aa5;
+}
+
+/* O símbolo no canto superior direito */
+.moldura-simbolo {
+    position: absolute;
+    top: -54px;                  /* era -44px */
+    right: -54px;                /* era -44px */
+    z-index: 2;
+    font-family: monospace;
+    font-size: 34px;             /* era 28px */
+    color: #6d5aa5;
+}
+
+/* Linha dos botões */
+.sobre-botoes {
+    display: flex;                /* botões lado a lado */
+    gap: 14px;                    /* espaço entre eles */
+    margin-top: 32px;
+}
+
+/* O que os dois botões têm em comum */
+.btn-primario,
+.btn-secundario {
+    padding: 14px 28px;           /* era 12px 24px */
+    border-radius: 6px;
+    font-size: 17px;              /* era 15px */
+    font-weight: 600;
+    text-decoration: none;        /* tira o sublinhado do link */
+    color: #fff;
+    transition: 0.2s;             /* suaviza a mudança no hover */
+}
+
+/* Botão principal (link) */
+.btn-primario {
+    background: #7c5cd6;
+}
+.btn-primario:hover {
+    background: #6b4bc4;
+}
+
+/* Botão secundário (<button>, abrirá o modal) */
+.btn-secundario {
+    border: 1px solid #333;
+    background: transparent;      /* remove o fundo cinza padrão do <button> */
+    cursor: pointer;              /* mãozinha ao passar o mouse */
+}
+.btn-secundario:hover {
+    border-color: #7c5cd6;
+}
+
+/* Texto pequeno abaixo dos botões */
+.sobre-info {
+    display: block;
+    margin-top: 28px;
+    font-size: 15px;              /* era 13px */
+    color: #777;
+}
