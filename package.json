@@ -11,8 +11,13 @@
     "wakatime:oauth": "node scripts/wakatime-oauth.mjs"
   },
   "dependencies": {
+    "@emailjs/browser": "^5.0.3",
+    "country-flag-icons": "^1.6.20",
+    "i18next": "^26.4.6",
+    "i18next-browser-languagedetector": "^8.2.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-i18next": "^17.0.18",
     "react-icons": "^5.7.0",
     "react-pdf": "^10.5.0"
   },

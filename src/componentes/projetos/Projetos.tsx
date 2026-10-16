@@ -1,18 +1,21 @@
+import { useTranslation } from "react-i18next";
 import { projetos } from "../../data/projetos";
 import "./Projetos.css";
 
 function Projetos() {
+    const { t } = useTranslation();
+
     return (
         <section className="projetos" id="projetos">
             <div className="projetos-lista">
                 <div className="titulo">
-                    <h2>Projetos</h2>
+                    <h2>{t("projects.title")}</h2>
                 </div>
                 {projetos.map((p) => (
                     <article className="projeto-card" key={p.id}>
                         <div className={`projeto-previa${p.imagem ? " com-imagem" : ""}`}>
                             {p.imagem ? (
-                                <img src={p.imagem} alt={`Prévia do projeto ${p.titulo}`} />
+                                <img src={p.imagem} alt={t("projects.previewAlt", { title: p.titulo })} />
                             ) : (
                                 <>
                                     <svg
@@ -28,16 +31,16 @@ function Projetos() {
                                         <circle cx="8.5" cy="8.5" r="1.5" />
                                         <path d="m21 15-5-5L5 21" />
                                     </svg>
-                                    <span className="previa-titulo">Screenshot do projeto</span>
-                                    <span className="previa-legenda">Prévia · 16:9</span>
+                                    <span className="previa-titulo">{t("projects.screenshot")}</span>
+                                    <span className="previa-legenda">{t("projects.previewCaption")}</span>
                                 </>
                             )}
                         </div>
 
                         <div className="projeto-conteudo">
-                            <p className="projeto-tipo">{p.tipo}</p>
+                            <p className="projeto-tipo">{t(`projects.items.${p.id}.type`)}</p>
                             <h3 className="projeto-titulo">{p.titulo}</h3>
-                            <p className="projeto-descricao">{p.descricao}</p>
+                            <p className="projeto-descricao">{t(`projects.items.${p.id}.description`)}</p>
 
                             <ul className="projeto-tags">
                                 {p.tags.map((tag) => (
@@ -48,7 +51,7 @@ function Projetos() {
                             <div className="projeto-links">
                                 {p.demo && (
                                     <a className="principal" href={p.demo} target="_blank" rel="noopener noreferrer">
-                                        Ver demo ↗
+                                        {t("projects.demo")}
                                     </a>
                                 )}
                                 {p.github && (

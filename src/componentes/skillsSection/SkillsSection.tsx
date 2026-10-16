@@ -1,4 +1,5 @@
 import { useState, type CSSProperties } from "react";
+import { useTranslation } from "react-i18next";
 import { FiGlobe, FiGrid } from "react-icons/fi";
 import SkillsGlobe from "../skillsGlobe/SkillsGlobe";
 import type { Skill, Category } from "../../data/skills";
@@ -13,6 +14,7 @@ type Filtro = "Todas" | Category;
 type Visao = "globo" | "lista";
 
 export default function SkillsSection({ skills, categories }: Props) {
+    const { t } = useTranslation();
     const [category, setCategory] = useState<Filtro>("Todas");
     const [view, setView] = useState<Visao>("globo");
 
@@ -24,10 +26,17 @@ export default function SkillsSection({ skills, categories }: Props) {
 
     const filtros: Filtro[] = ["Todas", ...categories];
 
+    // Valor interno (usado na lógica) é uma coisa; rótulo exibido é outra.
+    // O defaultValue mostra o nome original enquanto a tradução não existir.
+    const rotulo = (cat: Filtro) =>
+        cat === "Todas"
+            ? t("skills.all")
+            : t(`skills.categories.${cat}`, { defaultValue: cat });
+
     return (
         <div className="skills-section">
             <div className="skills-toolbar">
-                <div className="skills-chips" role="group" aria-label="Categoria">
+                <div className="skills-chips" role="group" aria-label={t("skills.categoryLabel")}>
                     {filtros.map((cat) => (
                         <button
                             key={cat}
@@ -36,19 +45,19 @@ export default function SkillsSection({ skills, categories }: Props) {
                             aria-pressed={cat === category}
                             onClick={() => setCategory(cat)}
                         >
-                            {cat} <span>{count(cat)}</span>
+                            {rotulo(cat)} <span>{count(cat)}</span>
                         </button>
                     ))}
                 </div>
 
-                <div className="skills-view" role="group" aria-label="Visualização">
+                <div className="skills-view" role="group" aria-label={t("skills.viewLabel")}>
                     <button
                         type="button"
                         className={view === "globo" ? "active" : ""}
                         aria-pressed={view === "globo"}
                         onClick={() => setView("globo")}
                     >
-                        <FiGlobe aria-hidden="true" /> Globo
+                        <FiGlobe aria-hidden="true" /> {t("skills.globe")}
                     </button>
                     <button
                         type="button"
@@ -56,7 +65,7 @@ export default function SkillsSection({ skills, categories }: Props) {
                         aria-pressed={view === "lista"}
                         onClick={() => setView("lista")}
                     >
-                        <FiGrid aria-hidden="true" /> Lista
+                        <FiGrid aria-hidden="true" /> {t("skills.list")}
                     </button>
                 </div>
             </div>
@@ -65,9 +74,7 @@ export default function SkillsSection({ skills, categories }: Props) {
                 <>
                     {/* key: ao trocar de categoria, o globo recomeça com os novos pontos */}
                     <SkillsGlobe key={category} skills={filtered} />
-                    <p className="skills-hint">
-                        Arraste para girar · clique num ícone para abrir o link
-                    </p>
+                    <p className="skills-hint">{t("skills.hint")}</p>
                 </>
             ) : (
                 <ul className="skills-grid">
@@ -85,7 +92,11 @@ export default function SkillsSection({ skills, categories }: Props) {
                                         <Icon aria-hidden="true" />
                                     </span>
                                     <span className="skills-grid-nome">{skill.name}</span>
-                                    <small>{skill.category}</small>
+                                    <small>
+                                        {t(`skills.categories.${skill.category}`, {
+                                            defaultValue: skill.category,
+                                        })}
+                                    </small>
                                 </a>
                             </li>
                         );

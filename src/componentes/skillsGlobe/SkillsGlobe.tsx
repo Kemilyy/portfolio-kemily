@@ -6,6 +6,7 @@ import {
     type MouseEvent as ReactMouseEvent,
     type PointerEvent as ReactPointerEvent,
 } from "react";
+import { useTranslation } from "react-i18next";
 import type { Skill } from "../../data/skills";
 import "./SkillsGlobe.css";
 
@@ -85,6 +86,7 @@ const prefersReducedMotion = (): boolean =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }: Props) {
+    const { t } = useTranslation();
     const stageRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const itemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -267,7 +269,7 @@ export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }:
         >
             <canvas ref={canvasRef} className="skills-globe-canvas" aria-hidden="true" />
 
-            <ul className="skills-globe-layer" aria-label="Habilidades">
+            <ul className="skills-globe-layer" aria-label={t("skills.globeLabel")}>
                 {skills.map((skill, i) => {
                     const Icon = skill.icon;
                     return (

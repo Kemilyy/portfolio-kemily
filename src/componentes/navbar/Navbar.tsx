@@ -1,37 +1,43 @@
-import './Navbar.css';
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../languageSwitcher/LanguageSwitcher";
+import "./Navbar.css";
 
 interface NavbarProps {
-    onAbrirCurriculo: () => void;
+  onAbrirCurriculo: () => void;
 }
 
 function Navbar({ onAbrirCurriculo }: NavbarProps) {
-    return (
-        <header className="topo">
-            <a href="#" className="logo"> logo </a>
+  const { t } = useTranslation();
 
-            <nav>
-                <ul className="menu">
-                    <li><a href="#sobre">Sobre mim</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#experiencias">Experiencias</a></li>
-                    <li><a href="#tecnologias">Tecnologias</a></li>
-                    <li>
-                        <a
-                            href="#curriculo"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                onAbrirCurriculo();
-                            }}
-                        >
-                            Currículo
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+  return (
+    <header className="topo">
+      <a href="#" className="logo"> logo </a>
 
-            <a href="#contato" className="btn">Vamos conversar ↗</a>
-        </header>
-    );
+      <nav>
+        <ul className="menu">
+          <li><a href="#sobre">{t("navbar.about")}</a></li>
+          <li><a href="#projetos">{t("navbar.projects")}</a></li>
+          <li><a href="#experiencias">{t("navbar.experience")}</a></li>
+          <li><a href="#tecnologias">{t("navbar.technologies")}</a></li>
+          <li>
+            <a
+              href="#curriculo"
+              onClick={(e) => {
+                e.preventDefault();
+                onAbrirCurriculo();
+              }}
+            >
+              {t("navbar.curriculum")}
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <LanguageSwitcher />
+
+      <a href="#contatos" className="btn">{t("navbar.cta")} ↗</a>
+    </header>
+  );
 }
 
 export default Navbar;

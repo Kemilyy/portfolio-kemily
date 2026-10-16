@@ -1,0 +1,136 @@
+{
+    "meta": {
+        "title": "Kemily | Portfólio"
+    },
+    "navbar": {
+        "about": "Sobre mim",
+        "projects": "Projetos",
+        "experience": "Experiências",
+        "technologies": "Tecnologias",
+        "curriculum": "Currículo",
+        "cta": "Vamos conversar"
+    },
+    "app": {
+        "curriculumLabel": "Currículo",
+        "loadingCurriculum": "Carregando currículo...",
+        "activityTitle": "Atividade de código"
+    },
+    "hero": {
+        "intro": "Transformo ideias em experiências digitais simples, acessíveis e bem construídas. Do primeiro componente à última linha de código.",
+        "projects": "Conheça meus projetos ↓",
+        "openCv": "Ver currículo ↗",
+        "closeCv": "Fechar currículo ↑",
+        "photoAlt": "Foto de Kemily"
+    },
+    "about": {
+        "hello": "Olá, eu sou",
+        "p1": "Sou estudante de Engenharia de Software e técnica em Redes de Computadores. Atuo no desenvolvimento web e na criação de aplicações em Python, Java e C++.",
+        "p2": "Tenho grande interesse em engenharia de software, desenvolvimento backend e frontend, sistemas distribuídos e resolução de problemas complexos. Meu objetivo é evoluir como engenheira de software, aplicando tecnologia para construir soluções eficientes, escaláveis e de alto impacto no mercado.",
+        "experienceTag": "Experiência",
+        "yearsUnit": "anos na área",
+        "experienceDesc": "Desenvolvimento de software, projetos acadêmicos e extracurriculares, e equipe de competição Flytec Drones.",
+        "educationTag": "Formação",
+        "degree1": "Estudante de Engenharia de Software",
+        "degree2": "Técnica em Redes de Computadores"
+    },
+    "experiences": {
+        "title": "Experiências",
+        "lead": "Um pouco da minha trajetória construindo para a web.",
+        "items": {
+            "fullstack": {
+                "period": "2024 — atual",
+                "mode": "Remoto · Tempo integral",
+                "role": "Desenvolvedor full-stack",
+                "company": "Empresa de tecnologia",
+                "description": "Desenvolvimento de aplicações web e APIs. Colaboração com design e produto para evoluir a experiência do usuário."
+            },
+            "frontend": {
+                "period": "2022 — 2024",
+                "mode": "Híbrido · Tempo integral",
+                "role": "Desenvolvedor front-end",
+                "company": "Estúdio digital",
+                "description": "Interfaces responsivas, componentes reutilizáveis e melhorias de acessibilidade em produtos digitais."
+            },
+            "estagio": {
+                "period": "2021 — 2022",
+                "mode": "Remoto · Estágio",
+                "role": "Estagiário de desenvolvimento",
+                "company": "Software house",
+                "description": "Manutenção de sites, correção de bugs e apoio ao time nas primeiras entregas de aplicações web."
+            }
+        }
+    },
+    "projects": {
+        "title": "Projetos",
+        "previewAlt": "Prévia do projeto {{title}}",
+        "screenshot": "Screenshot do projeto",
+        "previewCaption": "Prévia · 16:9",
+        "demo": "Ver demo ↗",
+        "items": {
+            "timelineart": {
+                "type": "Aplicação web",
+                "description": "Site de estudos sobre a história da arte, com linha do tempo dos períodos e um quiz para testar o que foi aprendido."
+            },
+            "projeto-2": {
+                "type": "Aplicação web",
+                "description": "Descreva aqui o que o projeto faz e qual problema ele resolve, em uma ou duas frases."
+            },
+            "projeto-3": {
+                "type": "Aplicação web",
+                "description": "Descreva aqui o que o projeto faz e qual problema ele resolve, em uma ou duas frases."
+            }
+        }
+    },
+    "skills": {
+        "title": "Tecnologias",
+        "all": "Todas",
+        "categoryLabel": "Categoria",
+        "viewLabel": "Visualização",
+        "globe": "Globo",
+        "list": "Lista",
+        "globeLabel": "Habilidades",
+        "hint": "Arraste para girar · clique num ícone para abrir o link",
+        "categories": {
+            "Linguagens": "Linguagens",
+            "Front-end": "Front-end",
+            "Back-end": "Back-end",
+            "Ferramentas": "Ferramentas"
+        }
+    },
+    "contact": {
+        "title": "Contatos",
+        "headingLine1": "Vamos construir",
+        "headingLine2": "algo juntos?",
+        "text": "Estou aberta a projetos e novas conexões. Conte um pouco sobre o que você tem em mente.",
+        "writeToMe": "Escreva para mim",
+        "cardTitle": "Envie uma mensagem",
+        "name": "Nome",
+        "namePlaceholder": "Como você se chama?",
+        "email": "E-mail",
+        "emailPlaceholder": "voce@exemplo.com",
+        "subject": "Assunto",
+        "subjectPlaceholder": "Sobre o que vamos conversar?",
+        "message": "Mensagem",
+        "messagePlaceholder": "Conte um pouco sobre sua ideia...",
+        "sending": "Enviando...",
+        "submit": "Enviar mensagem",
+        "success": "Mensagem enviada! Responderei assim que possível.",
+        "error": "Não foi possível enviar agora. Tente de novo ou escreva direto para o e-mail ao lado."
+    },
+    "curriculum": {
+        "langLabel": "Idioma do currículo",
+        "pages_one": "{{count}} página",
+        "pages_other": "{{count}} páginas",
+        "zoomLabel": "Zoom",
+        "zoomOut": "Diminuir zoom",
+        "zoomIn": "Aumentar zoom",
+        "fit": "Ajustar à largura",
+        "download": "Baixar PDF",
+        "open": "Abrir",
+        "error": "Não foi possível exibir o PDF aqui. Use os botões <b>Baixar PDF</b> ou <b>Abrir</b>."
+    },
+    "switcher": {
+        "label": "Idioma",
+        "changeTo": "Mudar para {{language}}"
+    }
+}

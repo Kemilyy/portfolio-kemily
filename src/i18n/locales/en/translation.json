@@ -1,0 +1,136 @@
+{
+    "meta": {
+        "title": "Kemily | Portfolio"
+    },
+    "navbar": {
+        "about": "About me",
+        "projects": "Projects",
+        "experience": "Experience",
+        "technologies": "Technologies",
+        "curriculum": "Resume",
+        "cta": "Let's talk"
+    },
+    "app": {
+        "curriculumLabel": "Resume",
+        "loadingCurriculum": "Loading resume...",
+        "activityTitle": "Coding activity"
+    },
+    "hero": {
+        "intro": "I turn ideas into simple, accessible, well-built digital experiences. From the first component to the last line of code.",
+        "projects": "See my projects ↓",
+        "openCv": "View resume ↗",
+        "closeCv": "Close resume ↑",
+        "photoAlt": "Photo of Kemily"
+    },
+    "about": {
+        "hello": "Hi, I'm",
+        "p1": "I'm a Software Engineering student and a Computer Networks technician. I work in web development and build applications in Python, Java and C++.",
+        "p2": "I'm deeply interested in software engineering, backend and frontend development, distributed systems and solving complex problems. My goal is to grow as a software engineer, applying technology to build efficient, scalable, high-impact solutions for the market.",
+        "experienceTag": "Experience",
+        "yearsUnit": "years in the field",
+        "experienceDesc": "Software development, academic and extracurricular projects, and the Flytec Drones competition team.",
+        "educationTag": "Education",
+        "degree1": "Software Engineering student",
+        "degree2": "Computer Networks technician"
+    },
+    "experiences": {
+        "title": "Experience",
+        "lead": "A bit of my journey building for the web.",
+        "items": {
+            "fullstack": {
+                "period": "2024 — present",
+                "mode": "Remote · Full-time",
+                "role": "Full-stack developer",
+                "company": "Technology company",
+                "description": "Development of web applications and APIs. Collaboration with design and product to improve the user experience."
+            },
+            "frontend": {
+                "period": "2022 — 2024",
+                "mode": "Hybrid · Full-time",
+                "role": "Front-end developer",
+                "company": "Digital studio",
+                "description": "Responsive interfaces, reusable components and accessibility improvements in digital products."
+            },
+            "estagio": {
+                "period": "2021 — 2022",
+                "mode": "Remote · Internship",
+                "role": "Development intern",
+                "company": "Software house",
+                "description": "Website maintenance, bug fixing and support to the team on the first web application deliveries."
+            }
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "previewAlt": "Preview of the {{title}} project",
+        "screenshot": "Project screenshot",
+        "previewCaption": "Preview · 16:9",
+        "demo": "View demo ↗",
+        "items": {
+            "timelineart": {
+                "type": "Web application",
+                "description": "A study website about art history, with a timeline of the periods and a quiz to test what you have learned."
+            },
+            "projeto-2": {
+                "type": "Web application",
+                "description": "Describe here what the project does and which problem it solves, in one or two sentences."
+            },
+            "projeto-3": {
+                "type": "Web application",
+                "description": "Describe here what the project does and which problem it solves, in one or two sentences."
+            }
+        }
+    },
+    "skills": {
+        "title": "Technologies",
+        "all": "All",
+        "categoryLabel": "Category",
+        "viewLabel": "View",
+        "globe": "Globe",
+        "list": "List",
+        "globeLabel": "Skills",
+        "hint": "Drag to rotate · click an icon to open its link",
+        "categories": {
+            "Linguagens": "Languages",
+            "Front-end": "Front-end",
+            "Back-end": "Back-end",
+            "Ferramentas": "Tools"
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "headingLine1": "Let's build",
+        "headingLine2": "something together?",
+        "text": "I'm open to projects and new connections. Tell me a bit about what you have in mind.",
+        "writeToMe": "Write to me",
+        "cardTitle": "Send a message",
+        "name": "Name",
+        "namePlaceholder": "What's your name?",
+        "email": "Email",
+        "emailPlaceholder": "you@example.com",
+        "subject": "Subject",
+        "subjectPlaceholder": "What shall we talk about?",
+        "message": "Message",
+        "messagePlaceholder": "Tell me a bit about your idea...",
+        "sending": "Sending...",
+        "submit": "Send message",
+        "success": "Message sent! I'll reply as soon as possible.",
+        "error": "Couldn't send right now. Try again or write directly to the email next to this form."
+    },
+    "curriculum": {
+        "langLabel": "Resume language",
+        "pages_one": "{{count}} page",
+        "pages_other": "{{count}} pages",
+        "zoomLabel": "Zoom",
+        "zoomOut": "Zoom out",
+        "zoomIn": "Zoom in",
+        "fit": "Fit to width",
+        "download": "Download PDF",
+        "open": "Open",
+        "error": "Couldn't display the PDF here. Use the <b>Download PDF</b> or <b>Open</b> buttons."
+    },
+    "switcher": {
+        "label": "Language",
+        "changeTo": "Switch to {{language}}"
+    }
+}

@@ -7,7 +7,7 @@
 /* ---------- Seção que envolve o componente (título + conteúdo) ---------- */
 .waka-secao {
     padding: 112px 0 64px; 
-    background-color: #0d0d0d;        /* topo | laterais | base (topo era 64px) */
+    background-color: #14121b;        /* topo | laterais | base (topo era 64px) */
     /* ajuste conforme a seção vizinha, para alternar os fundos */
 }
 

@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+.exp {
+    --border: #2a2a31;
+    --text: #f2f2f5;
+    --muted: #a1a1aa;
+    --faint: #71717a;
+    --accent: #7c5cd6;
+    --accent-text: #9d82f5;
+
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    background: #0d0d0d;
+    color: var(--text);
+    font-family: var(--font-sans);
+    padding: 24px 0 80px;
+}
+
+.exp *,
+.exp *::before,
+.exp *::after {
+    box-sizing: border-box;
+}
+
+.exp__container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.exp__header {
+    margin-bottom: 56px;
+}
+
+.exp__title {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 0 0 14px;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.exp__index {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--accent-text);
+}
+
+.exp__slash {
+    color: var(--faint);
+    margin-left: 4px;
+}
+
+.exp__lead {
+    margin: 0;
+    font-size: 18px;
+    color: var(--muted);
+}
+
+/* ---------- Linha do tempo ---------- */
+
+.exp__timeline {
+    position: relative;
+}
+
+/* Trilho: uma única linha contínua, da primeira à última bolinha.
+   Posição e altura são calculadas pelo componente (--track-*). */
+.exp__track {
+    position: absolute;
+    top: var(--track-top, 0px);
+    left: calc(var(--track-left, 0px) - 1px);
+    width: 2px;
+    height: var(--track-h, 0px);
+    border-radius: 2px;
+    background: var(--border);
+    pointer-events: none;
+}
+
+/* Preenchimento roxo: desce até onde o mouse está (--fill) */
+.exp__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--fill, 0px);
+    border-radius: inherit;
+    background: linear-gradient(var(--accent), var(--accent-text));
+    transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    /* volta suave */
+}
+
+.exp__timeline.is-active .exp__fill {
+    box-shadow: 0 0 10px rgba(124, 92, 214, 0.6);
+    transition: height 0.12s ease-out;
+    /* acompanha o mouse */
+}
+
+.exp__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.exp__item {
+    display: grid;
+    grid-template-columns: 245px 20px minmax(0, 1fr);
+    grid-template-areas: "meta rail body";
+    column-gap: 45px;
+    --gap: 48px;
+    padding-bottom: var(--gap);
+}
+
+.exp__item:last-child {
+    padding-bottom: 0;
+}
+
+/* Coluna da data */
+
+.exp__meta {
+    grid-area: meta;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding-top: 4px;
+    text-align: right;
+}
+
+.exp__period {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--text);
+}
+
+.exp__item--current .exp__period {
+    color: var(--accent-text);
+}
+
+.exp__mode {
+    font-size: 15px;
+    color: var(--muted);
+}
+
+/* Bolinha */
+
+.exp__rail {
+    grid-area: rail;
+    position: relative;
+    align-self: stretch;
+}
+
+.exp__dot {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #1c1a26;
+    border: 2px solid #4b4766;
+    z-index: 1;
+    /* fica por cima da linha */
+    transition: background 0.25s ease, border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.exp__item:last-child .exp__dot {
+    background: #1a1a1f;
+    border-color: #2f2f36;
+}
+
+.exp__item--current .exp__dot {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(124, 92, 214, 0.2),
+        0 0 18px rgba(124, 92, 214, 0.5);
+}
+
+/* Acende quando a linha chega nela ou o mouse está sobre a experiência */
+.exp__item.exp__item--lit .exp__dot,
+.exp__item:hover .exp__dot {
+    background: var(--accent);
+    border-color: var(--accent-text);
+    box-shadow: 0 0 0 5px rgba(124, 92, 214, 0.25),
+        0 0 22px rgba(124, 92, 214, 0.7);
+}
+
+/* Conteúdo */
+
+.exp__body {
+    grid-area: body;
+}
+
+.exp__role {
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.exp__company {
+    margin: 0 0 16px;
+    font-size: 16px;
+    color: var(--muted);
+}
+
+.exp__item--current .exp__company {
+    color: var(--accent-text);
+}
+
+.exp__desc {
+    margin: 0;
+    max-width: 52em;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+/* ---------- Telas sem mouse (celular/tablet) ---------- */
+
+@media (hover: none) {
+    .exp__fill {
+        height: 100%;
+        opacity: 0.55;
+    }
+}
+
+/* ---------- Movimento reduzido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .exp__fill,
+    .exp__dot {
+        transition: none !important;
+    }
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 960px) {
+    .exp__item {
+        grid-template-columns: 180px 20px minmax(0, 1fr);
+        column-gap: 28px;
+    }
+}
+
+@media (max-width: 720px) {
+    .exp__item {
+        grid-template-columns: 20px minmax(0, 1fr);
+        grid-template-areas:
+            "rail meta"
+            "rail body";
+        column-gap: 20px;
+        row-gap: 10px;
+    }
+
+    .exp__meta {
+        align-items: flex-start;
+        text-align: left;
+        padding-top: 0;
+    }
+
+    .exp__role {
+        font-size: 21px;
+    }
+
+    .exp__desc {
+        font-size: 16px;
+    }
+}

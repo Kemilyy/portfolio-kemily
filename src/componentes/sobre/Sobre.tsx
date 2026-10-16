@@ -1,5 +1,6 @@
-import './Sobre.css';
-import foto from '../../assets/foto.jpeg';
+import { useTranslation } from "react-i18next";
+import "./Sobre.css";
+import foto from "../../assets/foto.jpeg";
 
 interface SobreProps {
     curriculoAberto: boolean;
@@ -7,15 +8,17 @@ interface SobreProps {
 }
 
 function Sobre({ curriculoAberto, onAlternarCurriculo }: SobreProps) {
+    const { t } = useTranslation();
+
     return (
         <section className="sobre">
             <div className="esquerda">
                 <h1 className="nome">Kemily</h1>
                 <h2 className="desc">Software engineer</h2>
-                <p>Transformo ideias em experiências digitais simples, acessíveis e bem construídas. Do primeiro componente à última linha de código.</p>
+                <p>{t("hero.intro")}</p>
 
                 <div className="sobre-botoes">
-                    <a href="#projetos" className="btn-primario">Conheça meus projetos ↓</a>
+                    <a href="#projetos" className="btn-primario">{t("hero.projects")}</a>
                     <button
                         type="button"
                         className="btn-secundario"
@@ -23,14 +26,14 @@ function Sobre({ curriculoAberto, onAlternarCurriculo }: SobreProps) {
                         aria-expanded={curriculoAberto}
                         aria-controls="curriculo"
                     >
-                        {curriculoAberto ? "Fechar currículo ↑" : "Ver currículo ↗"}
+                        {curriculoAberto ? t("hero.closeCv") : t("hero.openCv")}
                     </button>
                 </div>
             </div>
 
             <div className="direita">
-                <div className='moldura'>
-                    <img src={foto} alt="foto" />
+                <div className="moldura">
+                    <img src={foto} alt={t("hero.photoAlt")} />
                     <span className="moldura-simbolo">&lt;/&gt;</span>
                 </div>
             </div>

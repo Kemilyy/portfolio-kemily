@@ -1,45 +1,37 @@
+import { useTranslation } from "react-i18next";
 import "./SobreMim.css";
 
 function SobreMim() {
+    const { t } = useTranslation();
+
     return (
         <section className="sobreMim" id="sobre">
             <div className="sobre-grid">
                 {/* Coluna 1: títulos + apresentação */}
                 <div className="sobre-texto">
-                    <h2>Olá, eu sou</h2>
+                    <h2>{t("about.hello")}</h2>
                     <h3>Kemily Eduardo da Luz</h3>
 
-                    <p>
-                        Sou estudante de Engenharia de
-                        Software e técnica em Redes de Computadores. Atuo no desenvolvimento web e na
-                        criação de aplicações em Python, Java e C++.
-                    </p>
-                    <p>
-                        Tenho grande interesse em engenharia de software, desenvolvimento backend e
-                        frontend, sistemas distribuídos e resolução de problemas complexos. Meu objetivo
-                        é evoluir como engenheira de software, aplicando tecnologia para construir
-                        soluções eficientes, escaláveis e de alto impacto no mercado.
-                    </p>
+                    <p>{t("about.p1")}</p>
+                    <p>{t("about.p2")}</p>
                 </div>
 
                 {/* Coluna 2: dois cards empilhados */}
                 <div className="sobre-cards">
                     <article className="sobre-card">
-                        <p className="sobre-card-tipo">Experiência</p>
+                        <p className="sobre-card-tipo">{t("about.experienceTag")}</p>
                         <div className="sobre-card-destaque">
                             <span className="sobre-card-numero">4</span>
-                            <span className="sobre-card-unidade">anos na área</span>
+                            <span className="sobre-card-unidade">{t("about.yearsUnit")}</span>
                         </div>
-                        <p className="sobre-card-descricao">
-                            Desenvolvimento de software, projetos acadêmicos e extracurriculares, e equipe de competição Flytec Drones.
-                        </p>
+                        <p className="sobre-card-descricao">{t("about.experienceDesc")}</p>
                     </article>
 
                     <article className="sobre-card">
-                        <p className="sobre-card-tipo">Formação</p>
-                        <h3 className="sobre-card-titulo">Estudante de Engenharia de Software</h3>
+                        <p className="sobre-card-tipo">{t("about.educationTag")}</p>
+                        <h3 className="sobre-card-titulo">{t("about.degree1")}</h3>
                         <p className="sobre-card-descricao">PUC Minas</p>
-                        <h3 className="sobre-card-titulo">Técnica em Redes de Computadores</h3>
+                        <h3 className="sobre-card-titulo">{t("about.degree2")}</h3>
                         <p className="sobre-card-descricao">CEFET-MG</p>
                     </article>
                 </div>
