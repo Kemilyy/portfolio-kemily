@@ -6,8 +6,9 @@ export type Experiencia = {
 };
 
 // O mais recente deve ficar no topo.
-export const experiencias: Experiencia[] = [
-    { id: "fullstack", atual: true },
-    { id: "frontend" },
-    { id: "estagio" },
+export const experiencias = [
+    { id: "extensaoPuc", atual: true },
+    { id: "monitoria", atual: true },
+    { id: "competicao", atual: false },
+    { id: "extensaoCefet", atual: false },
 ];

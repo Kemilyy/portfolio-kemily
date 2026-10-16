@@ -37,26 +37,33 @@
         "title": "Experience",
         "lead": "A bit of my journey building for the web.",
         "items": {
-            "fullstack": {
-                "period": "2024 — present",
-                "mode": "Remote · Full-time",
-                "role": "Full-stack developer",
-                "company": "Technology company",
-                "description": "Development of web applications and APIs. Collaboration with design and product to improve the user experience."
+            "extensaoPuc": {
+                "period": "2026 — present",
+                "mode": "On-site · 5h per week",
+                "role": "Extension project",
+                "company": "Webtech",
+                "description": "Development of web applications and collaboration on team projects."
             },
-            "frontend": {
-                "period": "2022 — 2024",
-                "mode": "Hybrid · Full-time",
-                "role": "Front-end developer",
-                "company": "Digital studio",
-                "description": "Responsive interfaces, reusable components and accessibility improvements in digital products."
+            "monitoria": {
+                "period": "2026 — present",
+                "mode": "On-site · 20h per week",
+                "role": "Computability teaching assistant",
+                "company": "PUC Minas",
+                "description": "Classes and Q&A support for first-semester students."
             },
-            "estagio": {
-                "period": "2021 — 2022",
-                "mode": "Remote · Internship",
-                "role": "Development intern",
-                "company": "Software house",
-                "description": "Website maintenance, bug fixing and support to the team on the first web application deliveries."
+            "competicao": {
+                "period": "2025",
+                "mode": "On-site",
+                "role": "Santa Catarina Drone Competition",
+                "company": "SATC",
+                "description": "Team competition with scheduled drone flight windows."
+            },
+            "extensaoCefet": {
+                "period": "2024 — 2025",
+                "mode": "Hybrid · Internship",
+                "role": "Extension project",
+                "company": "Flytec Drones",
+                "description": "Building the team's website and automating drones."
             }
         }
     },

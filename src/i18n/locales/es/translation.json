@@ -37,26 +37,33 @@
         "title": "Experiencia",
         "lead": "Un poco de mi trayectoria construyendo para la web.",
         "items": {
-            "fullstack": {
-                "period": "2024 — actualidad",
-                "mode": "Remoto · Tiempo completo",
-                "role": "Desarrolladora full-stack",
-                "company": "Empresa de tecnología",
-                "description": "Desarrollo de aplicaciones web y APIs. Colaboración con diseño y producto para mejorar la experiencia del usuario."
+            "extensaoPuc": {
+                "period": "2026 — actualidad",
+                "mode": "Presencial · 5h semanales",
+                "role": "Proyecto de extensión",
+                "company": "Webtech",
+                "description": "Desarrollo de aplicaciones web y colaboración en proyectos de equipo."
             },
-            "frontend": {
-                "period": "2022 — 2024",
-                "mode": "Híbrido · Tiempo completo",
-                "role": "Desarrolladora front-end",
-                "company": "Estudio digital",
-                "description": "Interfaces responsivas, componentes reutilizables y mejoras de accesibilidad en productos digitales."
+            "monitoria": {
+                "period": "2026 — actualidad",
+                "mode": "Presencial · 20h semanales",
+                "role": "Monitora de computabilidad",
+                "company": "PUC Minas",
+                "description": "Clases y resolución de dudas para estudiantes del 1.er semestre."
             },
-            "estagio": {
-                "period": "2021 — 2022",
-                "mode": "Remoto · Pasantía",
-                "role": "Pasante de desarrollo",
-                "company": "Software house",
-                "description": "Mantenimiento de sitios, corrección de errores y apoyo al equipo en las primeras entregas de aplicaciones web."
+            "competicao": {
+                "period": "2025",
+                "mode": "Presencial",
+                "role": "Competencia Catarinense de Drones",
+                "company": "SATC",
+                "description": "Competencia en equipo con ventanas de vuelo para los drones."
+            },
+            "extensaoCefet": {
+                "period": "2024 — 2025",
+                "mode": "Híbrido · Pasantía",
+                "role": "Proyecto de extensión",
+                "company": "Flytec Drones",
+                "description": "Creación del sitio web del equipo y automatización de drones."
             }
         }
     },

@@ -10,7 +10,7 @@ export default function Experiencias() {
     // Posição vertical (px, relativa à linha do tempo) do centro de cada bolinha
     const centersRef = useRef<number[]>([]);
     const [active, setActive] = useState(false);
-    const [lit, setLit] = useState(0); // quantas bolinhas a linha já alcançou
+    const [lit, setLit] = useState(0); 
 
     // Mede onde ficam as bolinhas e estica a linha da primeira até a última.
     const measure = useCallback(() => {
