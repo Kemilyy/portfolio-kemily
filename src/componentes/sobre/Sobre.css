@@ -1,9 +1,9 @@
 .sobre {
     display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
+    grid-template-columns: auto auto;   
+    justify-content: center;            
     align-items: center;
-    gap: 180px;
+    gap: 180px;                         
     min-height: 80vh;
     padding: 0px 80px;
     margin-bottom: 50px;
@@ -15,7 +15,7 @@
 }
 
 .nome {
-    font-size: clamp(56px, 9vw, 100px);
+    font-size: 100px;                 
     color: #866ad8;
     margin-bottom: 0;
     margin-top: 0;
@@ -23,13 +23,13 @@
 
 .desc {
     margin: 5px;
-    font-size: clamp(28px, 4.5vw, 50px);
+    font-size: 50px;                  
 }
 
 .esquerda p {
-    max-width: 650px;
+    max-width: 650px;                  
     line-height: 1.6;
-    font-size: 15px;
+    font-size: 15px;                   
     color: #aaa;
 }
 
@@ -41,8 +41,7 @@
 
 .moldura {
     position: relative;
-    width: 100%;
-    max-width: 320px;
+    max-width: 320px;                   /* era 300px */
     margin-top: 50px;
 }
 
@@ -61,7 +60,7 @@
 .moldura::after {
     content: "";                 /* obrigatório: sem isso o pseudo-elemento não aparece */
     position: absolute;
-    inset: -20px;                /* estende para fora nos 4 lados */
+    inset: -20px;                /* estende para fora nos 4 lados (era -16px) */
     border: 2px solid #5d44a1;
     border-radius: 12px;
     z-index: 0;
@@ -75,18 +74,17 @@
 /* O símbolo no canto superior direito */
 .moldura-simbolo {
     position: absolute;
-    top: -54px;
-    right: -54px;
+    top: -54px;                  /* era -44px */
+    right: -54px;                /* era -44px */
     z-index: 2;
     font-family: monospace;
-    font-size: 34px;
+    font-size: 34px;             /* era 28px */
     color: #6d5aa5;
 }
 
 /* Linha dos botões */
 .sobre-botoes {
     display: flex;                /* botões lado a lado */
-    flex-wrap: wrap;
     gap: 14px;                    /* espaço entre eles */
     margin-top: 32px;
 }
@@ -94,9 +92,9 @@
 /* O que os dois botões têm em comum */
 .btn-primario,
 .btn-secundario {
-    padding: 14px 28px;
+    padding: 14px 28px;           /* era 12px 24px */
     border-radius: 6px;
-    font-size: 17px;
+    font-size: 17px;              /* era 15px */
     font-weight: 600;
     text-decoration: none;        /* tira o sublinhado do link */
     color: #fff;
@@ -111,7 +109,7 @@
     background: #6b4bc4;
 }
 
-/* Botão secundário (<button>, abre o currículo) */
+/* Botão secundário (<button>, abrirá o modal) */
 .btn-secundario {
     border: 1px solid #333;
     background: transparent;      /* remove o fundo cinza padrão do <button> */
@@ -125,7 +123,7 @@
 .sobre-info {
     display: block;
     margin-top: 28px;
-    font-size: 15px;
+    font-size: 15px;              /* era 13px */
     color: #777;
 }
 
@@ -133,73 +131,25 @@
     border-color: #7c5cd6;
 }
 
-/* ---------- Notebook pequeno / tablet horizontal ---------- */
-
-@media (max-width: 1200px) {
-    .sobre {
-        grid-template-columns: minmax(0, 1fr) 280px;
-        gap: 64px;
-        padding: 0 40px;
-    }
-
-    .esquerda {
-        transform: none;
-    }
-}
-
-/* ---------- Tablet vertical e celular: uma coluna ---------- */
-
 @media (max-width: 800px) {
     .sobre {
+        display: grid;
         grid-template-columns: minmax(0, 1fr);
-        justify-content: stretch;
-        gap: 56px;
-        min-height: auto;
-        padding: 0 20px;
-        margin-top: 32px;
-        margin-bottom: 48px;
+        gap: 32px;
     }
 
-    .nome {
-        font-size: clamp(52px, 17vw, 76px);
-    }
-
-    .desc {
-        margin: 4px 0;
-        font-size: clamp(26px, 8vw, 38px);
-    }
-
-    .esquerda p {
-        max-width: 100%;
-        font-size: 16px;
-    }
-
-    .sobre-botoes {
-        margin-top: 24px;
-    }
-
-    .btn-primario,
-    .btn-secundario {
-        flex: 1 1 auto;
-        padding: 14px 20px;
-        font-size: 16px;
-        text-align: center;
-    }
-
-    /* foto centralizada, com folga para as molduras decorativas não vazarem */
     .direita {
-        width: calc(100% - 80px);
-        max-width: 260px;
+        width: 100%;
+        max-width: 320px;
         margin: 0 auto;
     }
 
     .moldura {
-        margin-top: 24px;
+        max-width: 100%;
     }
 
-    .moldura-simbolo {
-        top: -42px;
-        right: -26px;
-        font-size: 28px;
+    .moldura img {
+        max-width: 100%;
+        height: auto;
     }
 }

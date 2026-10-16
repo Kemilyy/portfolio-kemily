@@ -3,15 +3,28 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    height: clamp(340px, 62vw, 560px);
+    height: clamp(280px, 80vw, 560px);   /* menor no celular, cresce até 560px */
     overflow: hidden;
-    touch-action: none;       /* o dedo gira o globo em vez de rolar a página */
+    touch-action: pan-y;                 /* arrastar na horizontal gira; vertical rola a página */
     cursor: grab;
     user-select: none;
 }
 
 .skills-globe:active {
     cursor: grabbing;
+}
+
+/* Halo roxo atrás do globo */
+.skills-globe::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        color-mix(in srgb, var(--globe-color, #7c5cd6) 14%, transparent) 0%,
+        transparent 55%
+    );
+    pointer-events: none;
 }
 
 .skills-globe-canvas {
@@ -40,7 +53,7 @@
     align-items: center;
     width: 48px;
     height: 48px;
-    color: var(--skill);              /* cor do ícone, vinda do skills.ts */
+    color: var(--skill);              /* cor do ícone (escurecida no TSX se for clara) */
     background: #f4f2fb;              /* lilás quase branco */
     border: 1px solid #ddd6f3;
     border-radius: 50%;
@@ -48,6 +61,7 @@
         0 2px 4px rgba(0, 0, 0, 0.25),
         0 8px 18px -6px rgba(124, 92, 214, 0.45);
     text-decoration: none;
+    opacity: 0;                       /* o JS sobrescreve a cada frame */
     will-change: transform, opacity;
     transition:
         box-shadow 0.2s ease,
@@ -102,7 +116,13 @@
     transform: translate(-50%, 0);
 }
 
+/* ---------- Celular ---------- */
+
 @media (max-width: 480px) {
+    .skills-globe {
+        height: clamp(260px, 78vw, 340px);
+    }
+
     .skills-globe-item {
         width: 40px;
         height: 40px;

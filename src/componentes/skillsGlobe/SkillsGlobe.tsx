@@ -84,19 +84,25 @@ function rotate(p: Ponto, rx: number, ry: number): Ponto {
 
 const prefersReducedMotion = (): boolean =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-// Se a cor é escura demais para o fundo escuro, troca por um lilás claro
-// Se a cor é escura demais para o fundo escuro, troca por branco
+
+// O fundo do ícone é claro (círculo lilás): se a cor do ícone for clara demais, escurece
 function legivel(hex: string): string {
-    const m = /^#([0-9a-f]{6})$/i.exec(hex.trim());
-    if (!m) return hex; // formato inesperado: não mexe
-    const n = parseInt(m[1], 16);
+    let h = hex.trim().replace("#", "");
+    if (h.length === 3) h = h.split("").map((c) => c + c).join(""); // #fff -> #ffffff
+    if (!/^[0-9a-f]{6}$/i.test(h)) return hex; // formato inesperado: não mexe
+
+    const n = parseInt(h, 16);
     const r = (n >> 16) & 255;
     const g = (n >> 8) & 255;
     const b = n & 255;
     const luminancia = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; // 0 = preto, 1 = branco
-    return luminancia < 0.3 ? "#ffffff" : hex;
-}
 
+    if (luminancia < 0.55) return hex; // já tem contraste com o círculo claro
+
+    // Clara demais: multiplica cada canal por 0.5, o que mantém o tom e só escurece
+    const escurece = (c: number) => Math.round(c * 0.5).toString(16).padStart(2, "0");
+    return `#${escurece(r)}${escurece(g)}${escurece(b)}`;
+}
 
 export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }: Props) {
     const { t } = useTranslation();

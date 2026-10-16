@@ -10,7 +10,7 @@ export default function Experiencias() {
     // Posição vertical (px, relativa à linha do tempo) do centro de cada bolinha
     const centersRef = useRef<number[]>([]);
     const [active, setActive] = useState(false);
-    const [lit, setLit] = useState(0); 
+    const [lit, setLit] = useState(0);
 
     // Mede onde ficam as bolinhas e estica a linha da primeira até a última.
     const measure = useCallback(() => {
@@ -80,12 +80,7 @@ export default function Experiencias() {
         <section className="exp" id="experiencias">
             <div className="exp__container">
                 <header className="exp__header">
-                    <h2 className="exp__title">
-                        <span className="exp__index">
-                            03 <span className="exp__slash">/</span>
-                        </span>
-                        {t("experiences.title")}
-                    </h2>
+                    <h2 className="exp__title">{t("experiences.title")}</h2>
                     <p className="exp__lead">{t("experiences.lead")}</p>
                 </header>
 
