@@ -287,7 +287,7 @@ export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }:
                                     itemsRef.current[i] = el;
                                 }}
                                 className="skills-globe-item"
-                                style={{ "--skill": skill.color } as CSSProperties}
+                                style={{ "--skill": legivel(skill.color) } as CSSProperties}
                                 href={skill.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
