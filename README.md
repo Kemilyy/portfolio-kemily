@@ -37,8 +37,6 @@
 - [Documentações utilizadas](#-documentações-utilizadas)
 - [Autora](#-autora)
 - [Contribuição](#-contribuição)
-- [Agradecimentos](#-agradecimentos)
-- [Licença](#-licença)
 
 ---
 
