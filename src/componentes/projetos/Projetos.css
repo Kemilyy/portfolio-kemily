@@ -26,7 +26,8 @@
 /* ---------- Lista: grade responsiva (quem decide quantas colunas) ---------- */
 .projetos-lista {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* min(320px, 100%): em telas estreitas a coluna encolhe em vez de estourar a página */
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: clamp(16px, 2vw, 32px);
     width: 80%;                 /* 10% de margem de cada lado */
     max-width: 1600px;          /* teto de legibilidade em telas ultrawide */
@@ -53,6 +54,7 @@
 .projeto-card {
     display: flex;
     flex-direction: column;
+    min-width: 0;
     background-color: var(--card);
     border: 1px solid var(--borda);
     border-radius: 12px;
@@ -60,9 +62,11 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.projeto-card:hover{
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(152, 127, 227, 0.2);
+@media (hover: hover) {
+    .projeto-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(152, 127, 227, 0.2);
+    }
 }
 
 .projeto-previa {
@@ -131,6 +135,7 @@
     font-weight: 600;
     line-height: 1.25;
     color: var(--texto);
+    overflow-wrap: anywhere;
 }
 
 .projeto-descricao {
@@ -191,3 +196,26 @@
     border-radius: 4px;
 }
 
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 800px) {
+    .projetos {
+        padding: 40px 0;
+    }
+
+    .projetos-lista {
+        width: 90%;
+    }
+
+    .titulo h2 {
+        font-size: 30px;
+        margin-bottom: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projeto-card,
+    .projeto-links a {
+        transition: none;
+    }
+}

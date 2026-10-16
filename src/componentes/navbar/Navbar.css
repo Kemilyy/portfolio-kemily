@@ -1,4 +1,6 @@
 .topo {
+    position: relative;
+    z-index: 50;                 /* o menu aberto fica por cima do conteúdo */
     display: flex;
     align-items: center;
     gap: 32px;
@@ -8,13 +10,23 @@
 }
 
 .logo {
+    display: flex;
+    align-items: center;
     margin-right: auto;
-    color: #fff;
     text-decoration: none;
 }
 
-.logo span {
-    color: #7c6cf0;
+.logo-img {
+    display: block;
+    height: 40px;                /* a largura se ajusta sozinha */
+    width: auto;
+}
+
+/* Agrupa menu + idiomas + botão (no celular vira o painel do hambúrguer) */
+.nav-painel {
+    display: flex;
+    align-items: center;
+    gap: 32px;
 }
 
 .menu {
@@ -32,14 +44,199 @@
 }
 
 .menu a:hover {
-    color: #fff;
+    color: #7c5cd6;
 }
 
+/* ---------- Botão "Vamos conversar": preenchimento roxo na diagonal ---------- */
+
 .btn {
+    --preenchimento: #7c5cd6;
     color: #fff;
     text-decoration: none;
     font-size: 13px;
     padding: 10px 18px;
     border: 1px solid #333;
     border-radius: 6px;
+    white-space: nowrap;
+
+    /* Imagem de fundo 3x maior que o botão: metade roxa (canto inferior direito)
+       e metade transparente (canto superior esquerdo). */
+    background-color: transparent;
+    background-image: linear-gradient(
+        to top left,
+        var(--preenchimento) 50%,
+        transparent 50%
+    );
+    background-size: 300% 300%;
+    background-position: 0% 0%;      /* repouso: só aparece a parte transparente */
+    background-repeat: no-repeat;
+
+    transition:
+        background-position 0.45s ease,
+        border-color 0.45s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background-position: 100% 100%;  /* desliza e deixa só a parte roxa visível */
+    border-color: var(--preenchimento);
+}
+
+.btn:focus-visible {
+    outline: 2px solid #9d82f5;
+    outline-offset: 3px;
+}
+
+/* ---------- Botão hambúrguer (só aparece no celular/tablet) ---------- */
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+    border-color: #7c5cd6;
+}
+
+.nav-toggle:focus-visible,
+.menu a:focus-visible,
+.logo:focus-visible {
+    outline: 2px solid #9d82f5;
+    outline-offset: 3px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* vira um X quando o menu está aberto */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Notebook pequeno ---------- */
+
+@media (max-width: 1100px) {
+    .topo {
+        padding: 20px 40px;
+        gap: 24px;
+    }
+
+    .nav-painel {
+        gap: 24px;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+}
+
+/* ---------- Tablet e celular: menu hambúrguer ---------- */
+
+@media (max-width: 900px) {
+    .topo {
+        padding: 12px 20px;
+    }
+
+    .logo-img {
+        height: 34px;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    /* painel escondido por padrão; abre logo abaixo da barra */
+    .nav-painel {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding: 16px 20px 24px;
+        background: #0d0d0d;
+        border-bottom: 1px solid #222;
+        box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-painel--aberto {
+        display: flex;
+        animation: nav-abre 0.2s ease;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .menu li + li {
+        border-top: 1px solid #1c1c1c;
+    }
+
+    .menu a {
+        display: block;
+        padding: 14px 4px;
+        font-size: 16px;
+    }
+
+    .nav-painel .lang-switcher {
+        align-self: flex-start;
+    }
+
+    .btn {
+        padding: 14px 18px;
+        font-size: 15px;
+        text-align: center;
+    }
+}
+
+@keyframes nav-abre {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-painel--aberto {
+        animation: none;
+    }
+
+    .nav-toggle span,
+    .btn,
+    .nav-toggle {
+        transition: none;
+    }
 }

@@ -84,6 +84,19 @@ function rotate(p: Ponto, rx: number, ry: number): Ponto {
 
 const prefersReducedMotion = (): boolean =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Se a cor é escura demais para o fundo escuro, troca por um lilás claro
+// Se a cor é escura demais para o fundo escuro, troca por branco
+function legivel(hex: string): string {
+    const m = /^#([0-9a-f]{6})$/i.exec(hex.trim());
+    if (!m) return hex; // formato inesperado: não mexe
+    const n = parseInt(m[1], 16);
+    const r = (n >> 16) & 255;
+    const g = (n >> 8) & 255;
+    const b = n & 255;
+    const luminancia = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; // 0 = preto, 1 = branco
+    return luminancia < 0.3 ? "#ffffff" : hex;
+}
+
 
 export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }: Props) {
     const { t } = useTranslation();
@@ -142,7 +155,10 @@ export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }:
 
             const width = stage.clientWidth;
             const height = stage.clientHeight;
-            const radius = Math.min(width, height) * 0.38;
+            if (width === 0 || height === 0) return; // pai ainda sem tamanho: pula o frame
+
+            // Em telas pequenas o globo ocupa menos espaço (sobra folga para os ícones)
+            const radius = Math.min(width, height) * (width < 480 ? 0.34 : 0.38);
             const camera = radius * 4.2;
             const cx = width / 2;
             const cy = height / 2;
@@ -162,14 +178,6 @@ export default function SkillsGlobe({ skills, speed = 0.15, color = "#7c5cd6" }:
             }
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             ctx.clearRect(0, 0, width, height);
-
-            const halo = ctx.createRadialGradient(cx, cy, radius * 0.2, cx, cy, radius * 1.25);
-            halo.addColorStop(0, `${color}14`);
-            halo.addColorStop(1, `${color}00`);
-            ctx.fillStyle = halo;
-            ctx.beginPath();
-            ctx.arc(cx, cy, radius * 1.25, 0, Math.PI * 2);
-            ctx.fill();
 
             ctx.lineWidth = 1;
             ctx.strokeStyle = color;

@@ -136,10 +136,6 @@
 .exp__period {
     font-family: var(--font-mono);
     font-size: 16px;
-    color: var(--text);
-}
-
-.exp__item--current .exp__period {
     color: var(--accent-text);
 }
 
@@ -183,13 +179,22 @@
         0 0 18px rgba(124, 92, 214, 0.5);
 }
 
-/* Acende quando a linha chega nela ou o mouse está sobre a experiência */
-.exp__item.exp__item--lit .exp__dot,
-.exp__item:hover .exp__dot {
+/* Acende quando a linha chega nela */
+.exp__item.exp__item--lit .exp__dot {
     background: var(--accent);
     border-color: var(--accent-text);
     box-shadow: 0 0 0 5px rgba(124, 92, 214, 0.25),
         0 0 22px rgba(124, 92, 214, 0.7);
+}
+
+/* Hover só onde existe mouse (evita bolinha "presa" acesa no celular) */
+@media (hover: hover) {
+    .exp__item:hover .exp__dot {
+        background: var(--accent);
+        border-color: var(--accent-text);
+        box-shadow: 0 0 0 5px rgba(124, 92, 214, 0.25),
+            0 0 22px rgba(124, 92, 214, 0.7);
+    }
 }
 
 /* Conteúdo */
@@ -203,15 +208,12 @@
     font-size: 24px;
     font-weight: 500;
     letter-spacing: -0.01em;
+    overflow-wrap: anywhere;
 }
 
 .exp__company {
     margin: 0 0 16px;
     font-size: 16px;
-    color: var(--muted);
-}
-
-.exp__item--current .exp__company {
     color: var(--accent-text);
 }
 
@@ -244,34 +246,118 @@
 
 /* ---------- Responsivo ---------- */
 
+/* Tablet / notebook pequeno */
 @media (max-width: 960px) {
+    .exp__container {
+        padding: 0 20px;
+    }
+
+    .exp__header {
+        margin-bottom: 44px;
+    }
+
     .exp__item {
-        grid-template-columns: 180px 20px minmax(0, 1fr);
+        grid-template-columns: 170px 20px minmax(0, 1fr);
         column-gap: 28px;
+        --gap: 40px;
+    }
+
+    .exp__period {
+        font-size: 15px;
+    }
+
+    .exp__mode {
+        font-size: 14px;
     }
 }
 
+/* Celular: a data passa para cima do conteúdo, ao lado da linha */
 @media (max-width: 720px) {
+    .exp {
+        padding: 16px 0 56px;
+    }
+
+    .exp__title {
+        flex-wrap: wrap;
+        gap: 6px 12px;
+    }
+
+    .exp__lead {
+        font-size: 16px;
+    }
+
+    .exp__header {
+        margin-bottom: 36px;
+    }
+
     .exp__item {
         grid-template-columns: 20px minmax(0, 1fr);
         grid-template-areas:
             "rail meta"
             "rail body";
-        column-gap: 20px;
-        row-gap: 10px;
+        column-gap: 18px;
+        row-gap: 8px;
+        --gap: 36px;
     }
 
+    /* período e modalidade lado a lado, quebrando linha se faltar espaço */
     .exp__meta {
-        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: flex-start;
+        gap: 2px 12px;
+        padding-top: 2px;
         text-align: left;
-        padding-top: 0;
     }
 
     .exp__role {
-        font-size: 21px;
+        margin-bottom: 6px;
+        font-size: 20px;
+    }
+
+    .exp__company {
+        margin-bottom: 10px;
+        font-size: 15px;
     }
 
     .exp__desc {
         font-size: 16px;
+        line-height: 1.55;
+    }
+}
+
+/* Celulares estreitos */
+@media (max-width: 420px) {
+    .exp__container {
+        padding: 0 16px;
+    }
+
+    .exp__item {
+        grid-template-columns: 16px minmax(0, 1fr);
+        column-gap: 14px;
+        --gap: 30px;
+    }
+
+    .exp__dot {
+        width: 16px;
+        height: 16px;
+        top: 4px;
+    }
+
+    .exp__period {
+        font-size: 14px;
+    }
+
+    .exp__mode {
+        font-size: 13px;
+    }
+
+    .exp__role {
+        font-size: 18px;
+    }
+
+    .exp__desc {
+        font-size: 15px;
     }
 }
