@@ -78,9 +78,9 @@
                 "type": "Web application",
                 "description": "A study website about art history, with a timeline of the periods and a quiz to test what you have learned."
             },
-            "projeto-2": {
+            "linkbook": {
                 "type": "Web application",
-                "description": "Describe here what the project does and which problem it solves, in one or two sentences."
+                "description": "LinkBook is a web application that connects readers to the literary world, allowing them to explore books, discover publishers, and organize future reading plans."
             },
             "projeto-3": {
                 "type": "Web application",

@@ -1,35 +1,31 @@
 .sobre {
     display: grid;
-    grid-template-columns: auto auto;   
-    justify-content: center;            
+    grid-template-columns: minmax(0, 1fr) 320px;  /* texto flexível + foto fixa */
     align-items: center;
-    gap: 180px;                         
+    gap: clamp(64px, 8vw, 180px);
+    box-sizing: border-box;
+    max-width: 1280px;
     min-height: 80vh;
-    padding: 0px 80px;
-    margin-bottom: 50px;
-    margin-top: 20px;
-}
-
-.esquerda {
-    transform: translateX(-50px);
+    margin: 20px auto 50px;
+    padding: 0 80px 100px;       /* espaço extra embaixo sobe o conteúdo ~50px */
 }
 
 .nome {
-    font-size: 100px;                 
+    font-size: clamp(56px, 9vw, 100px);
     color: #866ad8;
     margin-bottom: 0;
     margin-top: 0;
 }
 
 .desc {
-    margin: 5px;
-    font-size: 50px;                  
+    margin: 5px 0;
+    font-size: clamp(28px, 4.5vw, 50px);
 }
 
 .esquerda p {
-    max-width: 650px;                  
+    max-width: 650px;
     line-height: 1.6;
-    font-size: 15px;                   
+    font-size: 15px;
     color: #aaa;
 }
 
@@ -41,7 +37,8 @@
 
 .moldura {
     position: relative;
-    max-width: 320px;                   /* era 300px */
+    width: 100%;
+    max-width: 320px;
     margin-top: 50px;
 }
 
@@ -60,7 +57,7 @@
 .moldura::after {
     content: "";                 /* obrigatório: sem isso o pseudo-elemento não aparece */
     position: absolute;
-    inset: -20px;                /* estende para fora nos 4 lados (era -16px) */
+    inset: -20px;                /* estende para fora nos 4 lados */
     border: 2px solid #5d44a1;
     border-radius: 12px;
     z-index: 0;
@@ -74,48 +71,69 @@
 /* O símbolo no canto superior direito */
 .moldura-simbolo {
     position: absolute;
-    top: -54px;                  /* era -44px */
-    right: -54px;                /* era -44px */
+    top: -54px;
+    right: -54px;
     z-index: 2;
     font-family: monospace;
-    font-size: 34px;             /* era 28px */
+    font-size: 34px;
     color: #6d5aa5;
 }
 
-/* Linha dos botões */
-.sobre-botoes {
-    display: flex;                /* botões lado a lado */
-    gap: 14px;                    /* espaço entre eles */
-    margin-top: 32px;
+/* Linha dos botões: sempre colada na esquerda, junto com o texto.
+   Os !important garantem que nenhuma regra de outro CSS desloque o bloco. */
+.sobre .sobre-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 14px;
+    width: 100%;
+    margin: 32px 0 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    transform: none !important;
+    text-align: left;
 }
 
 /* O que os dois botões têm em comum */
-.btn-primario,
-.btn-secundario {
-    padding: 14px 28px;           /* era 12px 24px */
+.sobre-btn-principal,
+.sobre-btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 14px 28px;
+    margin: 0 !important;
+    border: 1px solid transparent;
     border-radius: 6px;
-    font-size: 17px;              /* era 15px */
+    font-family: inherit;
+    font-size: 17px;
     font-weight: 600;
-    text-decoration: none;        /* tira o sublinhado do link */
+    line-height: 1.2;
+    text-decoration: none;
     color: #fff;
-    transition: 0.2s;             /* suaviza a mudança no hover */
+    transition: 0.2s;
 }
 
 /* Botão principal (link) */
-.btn-primario {
+.sobre-btn-principal {
     background: #7c5cd6;
 }
-.btn-primario:hover {
+.sobre-btn-principal:hover {
     background: #6b4bc4;
 }
 
-/* Botão secundário (<button>, abrirá o modal) */
-.btn-secundario {
-    border: 1px solid #333;
-    background: transparent;      /* remove o fundo cinza padrão do <button> */
-    cursor: pointer;              /* mãozinha ao passar o mouse */
+/* Botão secundário (<button>, abre o currículo) */
+.sobre-btn-secundario {
+    border-color: #333;
+    background: transparent;
+    cursor: pointer;
 }
-.btn-secundario:hover {
+.sobre-btn-secundario:hover {
+    border-color: #7c5cd6;
+}
+
+.sobre-btn-secundario[aria-expanded="true"] {
     border-color: #7c5cd6;
 }
 
@@ -123,33 +141,108 @@
 .sobre-info {
     display: block;
     margin-top: 28px;
-    font-size: 15px;              /* era 13px */
+    font-size: 15px;
     color: #777;
 }
 
-.btn-secundario[aria-expanded="true"] {
-    border-color: #7c5cd6;
+/* ---------- Notebook pequeno / tablet horizontal ---------- */
+
+@media (max-width: 1200px) {
+    .sobre {
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 64px;
+        padding: 0 40px 100px;
+    }
 }
 
-@media (max-width: 800px) {
+/* ---------- Tablet vertical e celular: uma coluna ---------- */
+/* Ordem: texto -> foto -> botões */
+
+@media (max-width: 900px) {
     .sobre {
-        display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: 32px;
+        grid-template-areas:
+            "texto"
+            "foto"
+            "botoes";
+        justify-content: stretch;
+        gap: 56px;
+        min-height: auto;
+        padding: 0 20px;
+        margin-top: 32px;
+        margin-bottom: 48px;
+    }
+
+    /* o wrapper some do layout: texto e botões viram itens diretos do grid */
+    .esquerda {
+        display: contents;
+    }
+
+    .sobre-texto {
+        grid-area: texto;
     }
 
     .direita {
-        width: 100%;
-        max-width: 320px;
+        grid-area: foto;
+    }
+
+    .sobre .sobre-acoes {
+        grid-area: botoes;
+        margin-top: 0 !important;
+    }
+
+    .nome {
+        font-size: clamp(52px, 17vw, 76px);
+    }
+
+    .desc {
+        margin: 4px 0;
+        font-size: clamp(26px, 8vw, 38px);
+    }
+
+    .esquerda p {
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    .sobre-btn-principal,
+    .sobre-btn-secundario {
+        padding: 14px 20px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* foto centralizada, com folga para as molduras decorativas não vazarem */
+    .direita {
+        width: calc(100% - 100px);
+        max-width: 230px;
         margin: 0 auto;
     }
 
     .moldura {
-        max-width: 100%;
+        margin-top: 24px;
     }
 
-    .moldura img {
-        max-width: 100%;
-        height: auto;
+    .moldura-simbolo {
+        top: -42px;
+        right: -26px;
+        font-size: 28px;
+    }
+}
+
+/* ---------- Celular: botões um embaixo do outro ---------- */
+
+@media (max-width: 600px) {
+    .sobre .direita {
+        max-width: 190px;
+    }
+
+    .sobre-acoes {
+        flex-direction: column;
+    }
+
+    .sobre-btn-principal,
+    .sobre-btn-secundario {
+        width: 100%;
     }
 }

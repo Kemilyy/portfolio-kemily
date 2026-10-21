@@ -1,4 +1,5 @@
 import timelineart from "../assets/projetos/timelineArt.png";
+import linkbook from "../assets/projetos/linkbook.png";
 
 // Os textos "tipo" e "descrição" ficam nos translation.json,
 // em projects.items.<id>
@@ -21,19 +22,11 @@ export const projetos: Projeto[] = [
         github: "https://github.com/Kemilyy/Historia-da-Arte.git",
     },
     {
-        id: "projeto-2",
-        titulo: "Nome do projeto 2", // TODO
-        tags: ["React", "TypeScript"], // TODO
-        // imagem: projeto2, // TODO: importe a imagem lá em cima e tire o // desta linha
-        demo: "#", // TODO
-        github: "#", // TODO
-    },
-    {
-        id: "projeto-3",
-        titulo: "Nome do projeto 3", // TODO
-        tags: ["HTML", "CSS", "JavaScript"], // TODO
-        // imagem: projeto3, // TODO: importe a imagem lá em cima e tire o // desta linha
-        demo: "#", // TODO
-        github: "#", // TODO
+        id: "linkbook",
+        titulo: "LinkBook", 
+        tags: ["HTML", "CSS", "JS", "Json Server"], 
+        imagem: linkbook,
+        demo: "https://kemilyy.github.io/LinkBook/", 
+        github: "https://github.com/Kemilyy/LinkBook.git",
     },
 ];

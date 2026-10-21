@@ -13,15 +13,17 @@ function Sobre({ curriculoAberto, onAlternarCurriculo }: SobreProps) {
     return (
         <section className="sobre">
             <div className="esquerda">
-                <h1 className="nome">Kemily</h1>
-                <h2 className="desc">Software engineer</h2>
-                <p>{t("hero.intro")}</p>
+                <div className="sobre-texto">
+                    <h1 className="nome">Kemily</h1>
+                    <h2 className="desc">Software engineer</h2>
+                    <p>{t("hero.intro")}</p>
+                </div>
 
-                <div className="sobre-botoes">
-                    <a href="#projetos" className="btn-primario">{t("hero.projects")}</a>
+                <div className="sobre-acoes">
+                    <a href="#projetos" className="sobre-btn-principal">{t("hero.projects")}</a>
                     <button
                         type="button"
-                        className="btn-secundario"
+                        className="sobre-btn-secundario"
                         onClick={onAlternarCurriculo}
                         aria-expanded={curriculoAberto}
                         aria-controls="curriculo"

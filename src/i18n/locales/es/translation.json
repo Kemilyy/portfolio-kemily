@@ -78,9 +78,9 @@
                 "type": "Aplicación web",
                 "description": "Sitio de estudio sobre la historia del arte, con línea de tiempo de los períodos y un quiz para poner a prueba lo aprendido."
             },
-            "projeto-2": {
+            "linkbook": {
                 "type": "Aplicación web",
-                "description": "Describe aquí qué hace el proyecto y qué problema resuelve, en una o dos frases."
+                "description": "LinkBook es una aplicación web que conecta a los lectores con el mundo literario, permitiéndoles explorar libros, conocer editoriales y organizar futuras lecturas."
             },
             "projeto-3": {
                 "type": "Aplicación web",
