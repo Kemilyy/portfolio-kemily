@@ -26,7 +26,6 @@ import "./WakaTimestats.css";
 // Nomes que o WakaTime manda em inglês → português
 const CATEGORY_NAMES = {
     Coding: "Programando",
-    "AI Coding": "Programando com IA",
     "Writing Docs": "Escrevendo documentação",
     "Writing Tests": "Escrevendo testes",
     Debugging: "Depurando",
@@ -39,6 +38,7 @@ const CATEGORY_NAMES = {
     Learning: "Aprendendo",
     Planning: "Planejando",
 };
+const INCLUDED_CATEGORIES = new Set(["Coding", "Writing Docs", "Writing Tests"]);
 const OS_NAMES = { Mac: "macOS" };
 
 const { RANGES, DEFAULT_RANGE, PROFILE_URL, MAX_LANGUAGES, HIDDEN_LANGUAGES } =
@@ -204,6 +204,17 @@ export default function WakaTimeStats({
         }
         : null;
 
+    const categories = (data?.categories ?? []).filter((category) =>
+        INCLUDED_CATEGORIES.has(category.name)
+    );
+    const includedCategorySeconds = categories.reduce((sum, category) => sum + category.seconds, 0);
+    const normalizedCategories = categories.map((category) => ({
+        ...category,
+        percent: includedCategorySeconds > 0
+            ? (category.seconds / includedCategorySeconds) * 100
+            : 0,
+    }));
+
     const topEditor = data?.editors?.[0];
 
     return (
@@ -290,7 +301,11 @@ export default function WakaTimeStats({
                                 <aside className="waka-card waka-side">
                                     <MiniList title="Editores" items={data.editors} />
                                     <MiniList title="Sistemas operacionais" items={data.operatingSystems} rename={OS_NAMES} />
-                                    <MiniList title="Categorias" items={data.categories} rename={CATEGORY_NAMES} />
+                                    <MiniList
+                                        title="Categorias"
+                                        items={normalizedCategories}
+                                        rename={CATEGORY_NAMES}
+                                    />
                                 </aside>
                             </div>
                         </>
